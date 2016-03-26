@@ -1,0 +1,276 @@
+# set to yes if you want Conky to be forked in the background
+background yes
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+out_to_console no
+
+# X font when Xft is disabled, you can pick one with program xfontsel
+#font 7x12
+#font 6x10
+#font 7x13
+#font 8x13
+#font 7x12
+#font *mintsmild.se*
+#font -*-*-*-*-*-*-34-*-*-*-*-*-*-*
+#font -artwiz-snap-normal-r-normal-*-*-100-*-*-p-*-iso8859-1
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont Bitstream Vera Sans Mono:size=8
+
+own_window        yes
+own_window_type   normal  # type de fenêtre "maison" (le type desktop convient si on n'a pas d'ombre)
+own_window_transparent yes
+own_window_colour transparent
+
+#own_window_argb_visual yes
+#own_window_argb_value 255
+own_window_hints  undecorated,below,sticky,skip_taskbar,skip_pager # définition du type
+
+# Text alpha when using Xft
+xftalpha 0.8
+
+on_bottom yes
+
+# mail spool
+mail_spool $MAIL
+
+# Update interval in seconds
+update_interval 1
+# Create own window instead of using desktop (required in nautilus)
+
+
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 320 5
+maximum_width 320
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Stippled borders?
+stippled_borders 10
+
+# border margins
+border_margin 4
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color white
+default_outline_color white
+
+# Text alignment, other possible values are commented
+#alignment top_left
+#minimum_size 10 10
+alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+gap_x 1930 #For the desktop
+#gap_x 20  #For the laptop
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer no
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# boinc (seti) dir
+# seti_dir /opt/seti
+
+# Possible variables to be used:
+#
+#      Variable         Arguments                  Description
+#  acpiacadapter                     ACPI ac adapter state.
+#  acpifan                           ACPI fan state
+#  acpitemp                          ACPI temperature.
+#  adt746xcpu                        CPU temperature from therm_adt746x
+#  adt746xfan                        Fan speed from therm_adt746x
+#  battery           (num)           Remaining capasity in ACPI or APM
+#                                    battery. ACPI battery number can be
+#                                    given as argument (default is BAT0).
+#  buffers                           Amount of memory buffered
+#  cached                            Amount of memory cached
+#  color             (color)         Change drawing color to color
+#  cpu                               CPU usage in percents
+#  cpubar            (height)        Bar that shows CPU usage, height is
+#                                    bar's height in pixels
+#  downspeed         net             Download speed in kilobytes
+#  downspeedf        net             Download speed in kilobytes with one
+#                                    decimal
+#  exec              shell command   Executes a shell command and displays
+#                                    the output in torsmo. warning: this
+#                                    takes a lot more resources than other
+#                                    variables. I'd recommend coding wanted
+#                                    behaviour in C and posting a patch :-).
+#  execi             interval, shell Same as exec but with specific interval.
+#                    command         Interval can't be less than
+#                                    update_interval in configuration.
+#  fs_bar            (height), (fs)  Bar that shows how much space is used on
+#                                    a file system. height is the height in
+#                                    pixels. fs is any file on that file
+#                                    system.
+#  fs_free           (fs)            Free space on a file system available
+#                                    for users.
+#  fs_free_perc      (fs)            Free percentage of space on a file
+#                                    system available for users.
+#  fs_size           (fs)            File system size
+#  fs_used           (fs)            File system used space
+#  hr                (height)        Horizontal line, height is the height in
+#                                    pixels
+#  i2c               (dev), type, n  I2C sensor from sysfs (Linux 2.6). dev
+#                                    may be omitted if you have only one I2C
+#                                    device. type is either in (or vol)
+#                                    meaning voltage, fan meaning fan or temp
+#                                    meaning temperature. n is number of the
+#                                    sensor. See /sys/bus/i2c/devices/ on
+#                                    your local computer.
+#  kernel                            Kernel version
+#  loadavg           (1), (2), (3)   System load average, 1 is for past 1
+#                                    minute, 2 for past 5 minutes and 3 for
+#                                    past 15 minutes.
+#  machine                           Machine, i686 for example
+#  mails                             Mail count in mail spool. You can use
+#                                    program like fetchmail to get mails from
+#                                    some server using your favourite
+#                                    protocol. See also new_mails.
+#  mem                               Amount of memory in use
+#  membar            (height)        Bar that shows amount of memory in use
+#  memmax                            Total amount of memory
+#  memperc                           Percentage of memory in use
+#  new_mails                         Unread mail count in mail spool.
+#  nodename                          Hostname
+#  outlinecolor      (color)         Change outline color
+#  pre_exec          shell command   Executes a shell command one time before
+#                                    torsmo displays anything and puts output
+#                                    as text.
+#  processes                         Total processes (sleeping and running)
+#  running_processes                 Running processes (not sleeping),
+#                                    requires Linux 2.6
+#  shadecolor        (color)         Change shading color
+#  stippled_hr       (space),        Stippled (dashed) horizontal line
+#                    (height)
+#  swapbar           (height)        Bar that shows amount of swap in use
+#  swap                              Amount of swap in use
+#  swapmax                           Total amount of swap
+#  swapperc                          Percentage of swap in use
+#  sysname                           System name, Linux for example
+#  time              (format)        Local time, see man strftime to get more
+#                                    information about format
+#  totaldown         net             Total download, overflows at 4 GB on
+#                                    Linux with 32-bit arch and there doesn't
+#                                    seem to be a way to know how many times
+#                                    it has already done that before torsmo
+#                                    has started.
+#  totalup           net             Total upload, this one too, may overflow
+#  updates                           Number of updates (for debugging)
+#  upspeed           net             Upload speed in kilobytes
+#  upspeedf          net             Upload speed in kilobytes with one
+#                                    decimal
+
+#  uptime                            Uptime
+#  uptime_short                      Uptime in a shorter format
+#
+#  seti_prog                         Seti@home current progress
+#  seti_progbar      (height)        Seti@home current progress bar
+#  seti_credit                       Seti@hoome total user credit
+
+
+# variable is given either in format $variable or in ${variable}. Latter
+# allows characters right after the variable and must be used in network
+# stuff because of an argument
+#${font Dungeon:style=Bold:pixelsize=10}I can change the font as well
+#${font Verdana:size=10}as many times as I choose
+#${font Perry:size=10}Including UTF-8,
+#${font Luxi Mono:size=10}justo como este texto que o google traduz fÃªz o portuguÃªs
+# stuff after 'TEXT' will be formatted on screen
+#${font Grunge:size=12}${time %a  %b  %d}${alignr -25}${time %k:%M}
+text_buffer_size 512 #augmente le buffer de telle sorte à afficher plus de choses
+
+TEXT
+${color #baab65}$alignc $sysname $kernel on $machine
+$alignc ${color #baab65}Uptime:${color #baab65} $uptime ${color #baab65}- Load: $loadavg
+#$alignc il te reste encore ${execi 1 /home/karlito/pour\ l\'ordi/conky/compte_a_rebour.sh}
+${color #baab65}$stippled_hr
+$alignc processor
+
+${color #baab65}$alignc CPU:${color #ffc800} ${cpu cpu0}% ${color #baab65}               Temp: ${color #ffc800}${execi 1 sensors | grep -m 1 'temp1' | cut -c16-21}
+${color #baab65}${cpugraph cpu0 000000 ffc800}
+#${color #baab65}$alignc CPU 2 Usage:${color #ffc800} ${cpu cpu2}% ${color #baab65}               Temp: ${color #ffc800}${execi 1 sensors | grep 'temp2' | cut -c15-21}
+#${color #baab65}${cpugraph cpu2 000000 ffc800}
+#${graph x=87 y=61 w=140 h=18 sensor=cpu cpu=0 interval=1000 color=53,229,82}
+
+${color #ffc800}          Name                 CPU%     MEM%
+${color #baab65} $alignc ${top name 1}   ${top cpu 1}   ${top mem 1}
+${color #baab65} $alignc ${top name 2}   ${top cpu 2}   ${top mem 2}
+${color #baab65} $alignc ${top name 3}   ${top cpu 3}   ${top mem 3}
+${color #baab65}$stippled_hr
+${color #baab65}$alignc Memory
+
+${color #baab65}$alignc RAM Usage:${color #baab65} $mem/$memmax - ${color #ffc800}$memperc%
+${color ffc800}${membar}
+$alignc${color #baab65}Processes:${color #ffc800} $processes  ${color baab65}Running:$alignc${color #ffc800} $running_processes
+
+${color #ffc800}          Name                 MEM%     CPU%
+${color #baab65} $alignc ${top_mem name 1}   ${top_mem mem 1}   ${top_mem cpu 1}
+${color #baab65} $alignc ${top_mem name 2}   ${top_mem mem 2}   ${top_mem cpu 2}
+${color #baab65} $alignc ${top_mem name 3}   ${top_mem mem 3}   ${top_mem cpu 3}
+${color #baab65}$stippled_hr${color ffc800}
+${color #baab65}$alignc Network
+${if_existing /sys/class/net/enp2s0/operstate up}
+${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "addr:" | cut -c21-33}
+	  ${color #baab65}Down:${color #ffc800} ${downspeed enp2s0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed enp2s0} k/s
+${color #baab65}${downspeedgraph enp2s0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph enp2s0 32,150 000000 ffc800}
+#${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "adr:" | cut -c20-33}
+#    ${color #baab65}Down:${color #ffc800} ${downspeed enp2s0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed enp2s0} k/s
+#${color #baab65}${downspeedgraph enp2s0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph enp2s0 32,150 000000 ffc800}
+${else}
+${if_existing /sys/class/net/eth0/operstate up}
+${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "addr:" | cut -c21-33}
+	  ${color #baab65}Down:${color #ffc800} ${downspeed eth0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed eth0} k/s
+${color #baab65}${downspeedgraph eth0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph eth0 32,150 000000 ffc800}
+#${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "adr:" | cut -c20-33}
+#    ${color #baab65}Down:${color #ffc800} ${downspeed eth0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed eth0} k/s
+#${color #baab65}${downspeedgraph eth0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph eth0 32,150 000000 ffc800}
+${else}
+${if_existing /sys/class/net/wlan0/operstate up}
+${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep "adr:" | tail -n 1 | cut -c20-33}
+${color #baab65}Down:${color #ffc800} ${downspeed wlan0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed wlan0} k/s
+${color #baab65}${downspeedgraph wlan0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph wlan0 32,150 000000 ffc800}
+${else}
+$alignc If you got internet, I don't know where it comes from.
+${endif}
+${endif}
+${endif}
+${color #baab65}$stippled_hr
+${color #baab65}$alignc Hard drive
+
+${color #baab65}$alignc Root ${color #baab65}${fs_used /}/${fs_size /}
+${color ffc800}${fs_bar /}
+${color #baab65}$alignc Home ${color #baab65}${fs_used /home}/${fs_size /home}
+${color ffc800}${fs_bar /home}
+$alignc ${color #baab65} Disk usage:${color #ffc800} ${diskio}   ${color #baab65}${diskiograph 8,50 000000 ffc800}        Temp : ${color #ffc800}${execi 300 hddtemp /dev/sda | cut --delimiter=: -f3 | cut -c2-6;}
+
+${color #baab65}$stippled_hr
+$alignc Godo : ${execi 10000 ~/creation/silver_price_retriever/ml_price_godo.pl;}€           SH : ${execi 10000 ~/creation/silver_price_retriever/ml_price_sh.pl;}€
+$alignc Ratio godo : ${execi 10000 ~/creation/silver_price_retriever/ml_ratio_godo.pl;}

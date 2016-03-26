@@ -1,0 +1,66 @@
+http://stezz.blogspot.de/2007/08/webdav-cadaver-and-ssl-certificates.html
+http://stackoverflow.com/questions/274656/building-subversion-1-5-4-on-debian-could-not-find-library-containing-rsa-new
+
+
+apt-get source cadaver
+cd cadaver-0.23.3
+apt-get install libssl-dev
+./configure --with-ca-bundle="/etc/ssl/certs/ca-certificates.crt" --with-ssl
+apt-get install libneon27-gnutls-dev
+make
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+On Ubuntu 12.04 (precise), you have to drop the certificate file to /usr/local/share/ca-certificates and it has to end ".crt".
+
+Then run update-ca-certificates. It should tell you: "1 added, 0 removed; done."
+
+Note that unfortunately firefox does not honor the system installed certificates ( http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=316436 ). You can use wget or w3m, which do honor them, to test if the certificate works.
+
+
+
+sur les serveurs :
+apt-get install cadaver libdate-calc-perl libwww-mechanize-perl
+
+on ajoute le certificat comme dit au dessus.
+On ajoute le .netrc dans le home de l'user qui va runner le script  il doit contenir:
+	machine www.martobre.fr
+		login user
+		password psw
+Puis il n'y a plus qu'à faire tourner le script
+
+
+
+
+
+primitive p_ip ocf:heartbeat:IPaddr2 params ip="192.168.0.200" cidr_netmask="24" nic="eth0"
+
+
+
+
+
+primitive p_crontask_calendar_enssat ocf:heartbeat:symlink params link="/etc/cron.d/calendar_enssat" backup_suffix=".disabled" target="/home/karlito/calendar/crontask" op monitor interval="20s" timeout="30s"
+
+
+group g_crontask p_crontask_webrss2email p_crontask_calendar_enssat meta target-role="Started"
+
+
+
+
+
