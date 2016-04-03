@@ -1,5 +1,5 @@
 #!/bin/bash
 
-sleep 25
+sleep 60
 
 /usr/bin/numlockx on
