@@ -1,0 +1,13 @@
+#karlito_ptr
+
+Wiimote.A       = KEY_F
+Wiimote.B       = KEY_SPACE
+Wiimote.Up      = KEY_UP
+Wiimote.Down    = KEY_DOWN
+Wiimote.Left    = KEY_LEFT
+Wiimote.Right   = KEY_RIGHT
+Wiimote.Home    = KEY_F5
+Wiimote.1       = KEY_PLAYPAUSE
+Wiimote.2       = KEY_NEXTSONG
+Wiimote.Plus    = KEY_VOLUMEUP
+Wiimote.Minus   = KEY_VOLUMEDOWN
