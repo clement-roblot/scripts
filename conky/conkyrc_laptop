@@ -1,5 +1,5 @@
 # set to yes if you want Conky to be forked in the background
-background no
+background yes
 
 cpu_avg_samples 2
 net_avg_samples 2
@@ -25,7 +25,7 @@ xftfont Bitstream Vera Sans Mono:size=8
 own_window        yes
 own_window_type   normal  # type de fenêtre "maison" (le type desktop convient si on n'a pas d'ombre)
 own_window_transparent yes
-own_window_colour hotpink
+own_window_colour transparent
 
 #own_window_argb_visual yes
 #own_window_argb_value 255
@@ -42,16 +42,15 @@ mail_spool $MAIL
 # Update interval in seconds
 update_interval 1
 # Create own window instead of using desktop (required in nautilus)
-#own_window yes
-#own_window_type   override  # type de fenêtre "maison" (le type desktop convient si on n'a pas d'ombre)
-#own_window_hints  undecorated,below,sticky,skip_taskbar,skip_pager # définition du type
+
+
 
 # Use double buffering (reduces flicker, may not work for everyone)
 double_buffer yes
 
 # Minimum size of text area
-#minimum_size 280 5
-maximum_width 500
+minimum_size 320 5
+maximum_width 320
 
 # Draw shades?
 draw_shades no
@@ -79,16 +78,16 @@ default_outline_color white
 # Text alignment, other possible values are commented
 #alignment top_left
 #minimum_size 10 10
-gap_x 20
-gap_y 80
-#alignment top_right
-alignment bottom_left
+alignment top_right
+#alignment bottom_left
 #alignment bottom_right
 
 # Gap between borders of screen and text
+#gap_x 1930 #For the desktop
+gap_x 20  #For the laptop
 
 # Add spaces to keep things from moving about?  This only affects certain objects.
-use_spacer none
+use_spacer no
 
 # Subtract file system buffers from used memory?
 no_buffers yes
@@ -206,11 +205,72 @@ uppercase no
 #${font Luxi Mono:size=10}justo como este texto que o google traduz fÃªz o portuguÃªs
 # stuff after 'TEXT' will be formatted on screen
 #${font Grunge:size=12}${time %a  %b  %d}${alignr -25}${time %k:%M}
-text_buffer_size 512 #augmente le buffer de telle sorte à afficher plus de flus RSS
+text_buffer_size 512 #augmente le buffer de telle sorte à afficher plus de choses
 
 TEXT
-${color #FFFFFF}$alignc Salut Karlito139
+${color #baab65}$alignc $sysname $kernel on $machine
+$alignc ${color #baab65}Uptime:${color #baab65} $uptime ${color #baab65}- Load: $loadavg
+#$alignc il te reste encore ${execi 1 /home/karlito/pour\ l\'ordi/conky/compte_a_rebour.sh}
+${color #baab65}$stippled_hr
+$alignc processor
 
-$alignc Il te reste ${execi 10 ~/scripts/conky/compte_a_rebour.sh;} avant le prochain mois.
+${color #baab65}$alignc CPU:${color #ffc800} ${cpu cpu0}% ${color #baab65}               Temp: ${color #ffc800}${execi 1 sensors | grep -m 1 'temp1' | cut -c16-21}
+${color #baab65}${cpugraph cpu0 000000 ffc800}
+#${color #baab65}$alignc CPU 2 Usage:${color #ffc800} ${cpu cpu2}% ${color #baab65}               Temp: ${color #ffc800}${execi 1 sensors | grep 'temp2' | cut -c15-21}
+#${color #baab65}${cpugraph cpu2 000000 ffc800}
+#${graph x=87 y=61 w=140 h=18 sensor=cpu cpu=0 interval=1000 color=53,229,82}
 
-${execi 10 ~/scripts/conky/todos.sh;}
+${color #ffc800}          Name                 CPU%     MEM%
+${color #baab65} $alignc ${top name 1}   ${top cpu 1}   ${top mem 1}
+${color #baab65} $alignc ${top name 2}   ${top cpu 2}   ${top mem 2}
+${color #baab65} $alignc ${top name 3}   ${top cpu 3}   ${top mem 3}
+${color #baab65}$stippled_hr
+${color #baab65}$alignc Memory
+
+${color #baab65}$alignc RAM Usage:${color #baab65} $mem/$memmax - ${color #ffc800}$memperc%
+${color ffc800}${membar}
+$alignc${color #baab65}Processes:${color #ffc800} $processes  ${color baab65}Running:$alignc${color #ffc800} $running_processes
+
+${color #ffc800}          Name                 MEM%     CPU%
+${color #baab65} $alignc ${top_mem name 1}   ${top_mem mem 1}   ${top_mem cpu 1}
+${color #baab65} $alignc ${top_mem name 2}   ${top_mem mem 2}   ${top_mem cpu 2}
+${color #baab65} $alignc ${top_mem name 3}   ${top_mem mem 3}   ${top_mem cpu 3}
+${color #baab65}$stippled_hr${color ffc800}
+${color #baab65}$alignc Network
+${if_existing /sys/class/net/enp2s0/operstate up}
+${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "addr:" | cut -c21-33}
+	  ${color #baab65}Down:${color #ffc800} ${downspeed enp2s0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed enp2s0} k/s
+${color #baab65}${downspeedgraph enp2s0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph enp2s0 32,150 000000 ffc800}
+#${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "adr:" | cut -c20-33}
+#    ${color #baab65}Down:${color #ffc800} ${downspeed enp2s0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed enp2s0} k/s
+#${color #baab65}${downspeedgraph enp2s0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph enp2s0 32,150 000000 ffc800}
+${else}
+${if_existing /sys/class/net/eth0/operstate up}
+${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "addr:" | cut -c21-33}
+	  ${color #baab65}Down:${color #ffc800} ${downspeed eth0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed eth0} k/s
+${color #baab65}${downspeedgraph eth0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph eth0 32,150 000000 ffc800}
+#${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "adr:" | cut -c20-33}
+#    ${color #baab65}Down:${color #ffc800} ${downspeed eth0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed eth0} k/s
+#${color #baab65}${downspeedgraph eth0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph eth0 32,150 000000 ffc800}
+${else}
+${if_existing /sys/class/net/wlan0/operstate up}
+${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep "adr:" | tail -n 1 | cut -c20-33}
+${color #baab65}Down:${color #ffc800} ${downspeed wlan0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed wlan0} k/s
+${color #baab65}${downspeedgraph wlan0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph wlan0 32,150 000000 ffc800}
+${else}
+$alignc If you got internet, I don't know where it comes from.
+${endif}
+${endif}
+${endif}
+${color #baab65}$stippled_hr
+${color #baab65}$alignc Hard drive
+
+${color #baab65}$alignc Root ${color #baab65}${fs_used /}/${fs_size /}
+${color ffc800}${fs_bar /}
+${color #baab65}$alignc Home ${color #baab65}${fs_used /home}/${fs_size /home}
+${color ffc800}${fs_bar /home}
+$alignc ${color #baab65} Disk usage:${color #ffc800} ${diskio}   ${color #baab65}${diskiograph 8,50 000000 ffc800}        Temp : ${color #ffc800}${execi 300 hddtemp /dev/sda | cut --delimiter=: -f3 | cut -c2-6;}
+
+${color #baab65}$stippled_hr
+$alignc Godo : ${execi 10000 ~/creation/silver_price_retriever/ml_price_godo.pl;}€           SH : ${execi 10000 ~/creation/silver_price_retriever/ml_price_sh.pl;}€
+$alignc Ratio godo : ${execi 10000 ~/creation/silver_price_retriever/ml_ratio_godo.pl;}

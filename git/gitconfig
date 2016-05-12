@@ -25,8 +25,8 @@
 	# editor = subl -w
 	#
 	whitespace = -trailing-space
-	autocrlf = true
-	editor = vim
+	#autocrlf = true
+	editor = vi
 	filemode = false
 	#Does filesystem operations in parallel to hide latency
 	preloadindex = true
