@@ -1,0 +1,21 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Auto Semi-Colon",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"Console Wrap for js",
+		"CSS Extended Completions",
+		"DocBlockr",
+		"HTML5",
+		"Package Control",
+		"Sass",
+		"StyleToken",
+		"SublimeLinter",
+		"TypeScript"
+	]
+}

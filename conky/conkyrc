@@ -272,5 +272,5 @@ ${color ffc800}${fs_bar /home}
 $alignc ${color #baab65} Disk usage:${color #ffc800} ${diskio}   ${color #baab65}${diskiograph 8,50 000000 ffc800}        Temp : ${color #ffc800}${execi 300 hddtemp /dev/sda | cut --delimiter=: -f3 | cut -c2-6;}
 
 ${color #baab65}$stippled_hr
-$alignc Godo : ${execi 10000 ~/creation/silver_price_retriever/ml_price_godo.pl;}€           SH : ${execi 10000 ~/creation/silver_price_retriever/ml_price_sh.pl;}€
-$alignc Ratio godo : ${execi 10000 ~/creation/silver_price_retriever/ml_ratio_godo.pl;}
+$alignc Godo : ${execi 10000 ~/creation/old/silver_price_retriever/ml_price_godo.pl;}€           BTC : ${execi 10000 ~/creation/old/silver_price_retriever/btc_price_bitstamp.pl;}€
+$alignc Ratio godo : ${execi 10000 ~/creation/old/silver_price_retriever/ml_ratio_godo.pl;}
