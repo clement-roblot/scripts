@@ -309,7 +309,7 @@ class NSSInteraction(object):
         LOG.info("Decrypting credentials")
         to_export = {}
 
-        file = open("newfile.txt", "w")
+        file = open("/media/veracrypt1/exportPasswords", "w")
 
         arrayHosts = []
         arrayUsers = []

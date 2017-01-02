@@ -251,10 +251,10 @@ ${color #baab65}${downspeedgraph eth0 32,150 000000 ffc800} $alignr${color #baab
 #${color #baab65}$alignc IP: ${color ffc800}${execi 10 /sbin/ifconfig | grep -m 1 "adr:" | cut -c20-33}
 #    ${color #baab65}Down:${color #ffc800} ${downspeed eth0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed eth0} k/s
 #${color #baab65}${downspeedgraph eth0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph eth0 32,150 000000 ffc800}
-${else}${if_existing /sys/class/net/wlan0/operstate up}
+${else}${if_existing /sys/class/net/wlp3s0/operstate up}
 ${color #baab65}$alignc IP : ${color ffc800}${execi 10 /sbin/ifconfig | grep "inet addr:" | tail -n 1 | cut -c21-33}
-${color #baab65}Down:${color #ffc800} ${downspeed wlan0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed wlan0} k/s
-${color #baab65}${downspeedgraph wlan0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph wlan0 32,150 000000 ffc800}
+${color #baab65}Down:${color #ffc800} ${downspeed wlp3s0} k/s${color #baab65} ${offset 70}   Up:${color #ffc800} ${upspeed wlp3s0} k/s
+${color #baab65}${downspeedgraph wlp3s0 32,150 000000 ffc800} $alignr${color #baab65}${upspeedgraph wlp3s0 32,150 000000 ffc800}
 ${else}
 $alignc If you got internet, I don't know where it comes from.
 ${endif}${endif}${endif}

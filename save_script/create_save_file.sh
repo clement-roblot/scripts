@@ -11,7 +11,7 @@ rm ~/Downloads/[$timestamp]archive.tar.gz
 
 mkdir -p ~/Downloads/[$timestamp]
 cd ~/Downloads/[$timestamp]
-split -b 100m ~/Downloads/[$timestamp]archive.tar.gz.enc [$timestamp]
+split -b 20m ~/Downloads/[$timestamp]archive.tar.gz.enc [$timestamp]
 rm ~/Downloads/[$timestamp]archive.tar.gz.enc
 
 
